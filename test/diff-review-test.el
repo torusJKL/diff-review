@@ -363,6 +363,8 @@ The repository has two commits and a dirty worktree touching two files."
       (should-not (mouse-on-link-p `(,w ,(point) (0 . 0) 0)))
       (should-not (eq (key-binding [mouse-1] nil nil (point)) #'diff-review-mouse-open))
       (should-not (eq (key-binding [mouse-2] nil nil (point)) #'diff-review-mouse-open))
+      ;; No hover highlight: lines sharing one mouse-face light up as one block.
+      (should-not (text-property-not-all (point-min) (point-max) 'mouse-face nil))
       (let ((file (text-property-any (point-min) (point-max) 'diff-review-index 0)))
         (should (mouse-on-link-p `(,w ,file (0 . 0) 0)))
         (should (eq (key-binding [mouse-2] nil nil file) #'diff-review-mouse-open))

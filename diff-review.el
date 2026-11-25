@@ -757,7 +757,6 @@ then the thread is outdated, as a pull request page says."
                 'diff-review-index i
                 'keymap diff-review-file-line-map
                 'follow-link t
-                'mouse-face 'highlight
                 'help-echo (if (plist-get file :old)
                                (format "%s %s %s"
                                        (plist-get file :old) (diff-review--glyph "→" "->") path)
@@ -841,8 +840,7 @@ A directory holding only a directory is merged with it, as in a/b."
       "\n")
      'diff-review-comment (gethash "id" comment)
      'keymap diff-review-file-line-map
-     'follow-link t
-     'mouse-face 'highlight)))
+     'follow-link t)))
 
 (defun diff-review--insert-comments ()
   "Insert the comment threads as a section, when there are any.
